@@ -3,6 +3,7 @@ import axios from "axios";
 
 const CatPage = () => {
     const [catUrls, setCatUrls] = useState([]);
+    console.log(catUrls)
 
     const catFetch = async (num) => {
         try {
@@ -15,14 +16,12 @@ const CatPage = () => {
 
     const handleChange = (e) => {
         e.preventDefault();
-        catFetch(e.target.value)
+        catFetch(e.target.value);
     }
 
-    const showAllImages = catUrls.map((cats) => {
-        <div>
-            {cats.url ?
-                <img src={cats.url}/>
-                : null}
+    const showAllImages = catUrls.map((cats, index) => {
+        <div key={cats.id}>
+            <img src={cats[index].url}/>
         </div>
     })
 
